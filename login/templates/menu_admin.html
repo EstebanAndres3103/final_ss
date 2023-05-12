@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Menú de Administradores</title>
+  <style>
+    /* Estilos para los colores del hotel Soleil */
+    body {
+      background-color: #d8e1f4;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      color: #0e20c4;
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #2a49f7;
+    }
+    li {
+      float: left;
+    }
+    li a {
+      display: block;
+      color: rgb(255, 255, 255);
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+    li a:hover {
+      background-color: rgb(31, 140, 241);
+    }
+    .btn-logout {
+      background-color: #2a49f7;
+      border: none;
+      border-radius: 4px;
+      color: #FFFFFF;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+      padding: 10px 20px;
+      text-transform: uppercase;
+    }
+    .btn-logout:hover {
+      background-color: rgb(31, 140, 241);
+    }
+  </style>
+</head>
+<body>
+  <h1>Menú de Administradores</h1>
+  <ul>
+    <li><a href="/mostrar_tablas/">Mostrar tablas</a></li>
+    <li><a href="/eliminar_tablas/">Modificar tablas</a></li>
+    <li><a href="#">Borrar elementos de la tabla</a></li>
+  </ul>
+  <a href="{% url 'logout' %}" class="btn-logout">Logout</a>
+</body>
+</html>

@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+ db:
+  image: postgres
+  environment:
+   - POSTGRES_USER=postgres
+   - POSTGRES_DB=final_ss_db
+   - POSTGRES_PASSWORD=Esteban3103
+
+ web:
+  build: .
+  command: python3 manage.py runserver 0.0.0.0:8000
+  volumes:
+   - .:/final_ss
+  ports:
+   - "8000:8000"
+  depends_on:
+   - db

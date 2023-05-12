@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Formulario de reserva de hotel</title>
+    <style>
+      /* Estilos para el hotel Soleil */
+      body {
+        background-color: #F1EAD3;
+        color: #444444;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        margin: 30;
+        padding: 0;
+      }
+      h1 {
+        color: #E76F51;
+        font-size: 36px;
+        font-weight: bold;
+        margin: 50px 0 30px;
+        text-align: center;
+        text-transform: uppercase;
+      }
+      label {
+        display: block;
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        margin-right: 20px;
+
+      }
+      input[type="text"], input[type="email"], input[type="tel"] {
+        border: 2px solid #E76F51;
+        border-radius: 4px;
+        font-size: 20px;
+        margin-bottom: 20px;
+        margin-right: 20px;
+        padding: 10px;
+        width: 60%;
+      }
+      input[type="submit"] {
+        background-color: #E76F51;
+        border: none;
+        border-radius: 4px;
+        color: #FFFFFF;
+        cursor: pointer;
+        font-size: 20px;
+        margin-top: 20px;
+        margin-right: 40px;
+        padding: 10px;
+        text-transform: uppercase;
+        width: 60%;
+      }
+      input[type="submit"]:hover {
+        background-color: #D44D2E;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Registre sus datos</h1>
+    <form method="post" action="/exito/">
+      {% csrf_token %}
+      <label for="dpi">Número de DPI:</label>
+      <input type="text" id="dpi" name="dpi" required>
+
+      <label for="correo">Correo electrónico:</label>
+      <input type="email" id="correo" name="correo" required>
+
+      <label for="telefono">Teléfono:</label>
+      <input type="tel" id="telefono" name="telefono" required>
+
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <input type="hidden" name="habitacion" value="{{ habitacion }}">
+      <input type="hidden" name="num_cuarto" value="{{ num_cuarto }}">
+      <input type="hidden" name="huespedes" value="{{ huespedes }}">
+      <input type="hidden" name="noches" value="{{ noches }}">
+      <input type="hidden" name="data" value="{{ data }}">
+
+      <input type="submit" value="Reservar ahora">
+    </form>
+  </body>
+</html>

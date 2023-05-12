@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reserva de habitación</title>
+    <style>
+      body {
+        background-color: #f5f5f5;
+        font-family: Arial, sans-serif;
+      }
+      
+      h1 {
+        color: #ff8c00;
+        text-align: center;
+      }
+      
+      form {
+        max-width: 500px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+      }
+      
+      label {
+        display: block;
+        margin-bottom: 10px;
+        color: #333;
+      }
+      
+      select, input[type="date"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+      
+      input[type="submit"] {
+        background-color: #ff8c00;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+      }
+      
+      input[type="submit"]:hover {
+        background-color: #f60;
+      }
+
+      input[type="reset"] {
+        background-color: #ff8c00;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+      }
+
+      input[type="reset"]:hover {
+        background-color: #f60;
+      }
+
+
+      .boton-volver {
+        background-color: #ff8c00;
+        color: #f8f1f1;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+        text-decoration: none;
+      }
+
+      .boton-volver:hover {
+        background-color: #f60;
+      }
+
+    </style>
+    <script>
+      function actualizarHuespedes() {
+        var tipoHabitacion = document.getElementById("tipo_habitacion").value;
+        var huespedes = document.getElementById("num_huespedes");
+        huespedes.options.length = 0; // Limpia las opciones anteriores
+        switch (tipoHabitacion) {
+          case "sencilla":
+            huespedes.options.add(new Option("1", "1"));
+            huespedes.options.add(new Option("2", "2"));
+            break;
+          case "doble":
+            huespedes.options.add(new Option("1", "1"));
+            huespedes.options.add(new Option("2", "2"));
+            huespedes.options.add(new Option("3", "3"));
+            huespedes.options.add(new Option("4", "4"));
+            break;
+          case "suite":
+            huespedes.options.add(new Option("1", "1"));
+            huespedes.options.add(new Option("2", "2"));
+            huespedes.options.add(new Option("3", "3"));
+            huespedes.options.add(new Option("4", "4"));
+            huespedes.options.add(new Option("5", "5"));
+            huespedes.options.add(new Option("6", "6"));
+            break;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Reserva de habitación</h1>
+    <form action="{% url 'confirmacion' %}" method="post">
+      {% csrf_token %}
+      <label for="tipo_habitacion">Tipo de habitación:</label>
+      <select id="tipo_habitacion" name="tipo_habitacion" onchange="actualizarHuespedes()">
+        <option value="sencilla">Sencilla</option>
+        <option value="doble">Doble</option>
+        <option value="suite">Suite</option>
+      </select>
+      <br>
+      <label for="num_huespedes">Número de huéspedes:</label>
+      <select id="num_huespedes" name="num_huespedes">
+        <option value="1">1 </option>
+        <option value="2">2 </option>
+      </select>
+      <br>
+      <label for="fecha_entrada">Fecha de entrada:</label>
+      <input type="date" id="fecha_entrada" name="fecha_entrada" required>
+      <br>
+      <label for="fecha_salida">Fecha de salida:</label>
+      <input type="date" id="fecha_salida" name="fecha_salida" required>
+      <br>
+      <input type="submit" value="Reservar">
+      <input type="reset" value="Limpiar campos">
+      <button class="boton-volver"><a href="/home/">Inicio</a></button>
+    </form>
+  </body>
+</html>

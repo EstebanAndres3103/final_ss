@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hotel Soleil</title>
+    <style>
+      body {
+        background-color: #f5f5f5;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        color: #333333;
+        line-height: 1.5;
+      }
+
+      header {
+        background-color: #d8e1f4;
+        color: #ffffff;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 36px;
+        margin-top: 0;
+        margin-bottom: 20px;
+      }
+
+      nav {
+        background-color: #ffffff;
+        border-bottom: 1px solid #dddddd;
+        padding: 10px;
+      }
+
+      nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav ul li {
+        display: inline-block;
+        margin-right: 20px;
+      }
+
+      nav ul li:last-child {
+        margin-right: 0;
+      }
+
+      a {
+        color: #333333;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: #0930db;
+        text-decoration: underline;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th, td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+      .button {
+        background-color: #0c10e9;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .button:hover {
+        background-color: #2c22bf;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Eliminar reservación</h1>
+    </header>
+
+    <main>
+
+      <p>Ingrese el número de DPI del cliente para eliminar la reservación:</p>
+      <form method="post">
+        {% csrf_token %}
+        <label for="dpi">DPI:</label>
+        <input type="text" id="dpi" name="dpi"><br><br>
+        <button type="submit" class="button">Eliminar</button>
+      </form>
+      <p>{{ mensaje }}</p>
+    </main>
+  </body>
+</html>

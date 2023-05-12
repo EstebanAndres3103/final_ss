@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reserva de habitación - Confirmación</title>
+    <style>
+      body {
+        background-color: #fff6e5;
+        color: #2b2d42;
+        font-family: sans-serif;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 2em;
+        margin-top: 1em;
+      }
+
+      p {
+        font-size: 1.2em;
+        margin-top: 1.5em;
+      }
+
+      a {
+        color: #f8f7f7;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+
+
+      button {
+        margin-top: 2em;
+        padding: 0.8em 1.2em;
+        border: none;
+        background-color: #ff8c00;
+        color: #fff6e5;
+        font-size: 1.2em;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s ease-out;
+      }
+
+      button:hover {
+        background-color: #e76f51;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>¡Confirme su reservación!</h1>
+    <p>Desea continuar con el registro de datos. Su reservación en hotel Soleil es:</p>
+    <p>Tipo de habitación: {{ habitacion }}</p>
+    <p>Su habitación es la número {{ numero_de_cuarto }}</p>
+    <p>Para {{ huespedes }} huespedes</p>
+    <p>Para {{ noches }} noches</p>
+    <p>Un total de ${{ data }}.00</p>
+    <button><a href="/habitaciones/">Cancelar reserva</a></button>
+    <form action="/registro/" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="habitacion" value="{{ habitacion }}">
+      <input type="hidden" name="numero_de_cuarto" value="{{ numero_de_cuarto }}">
+      <input type="hidden" name="huespedes" value="{{ huespedes }}">
+      <input type="hidden" name="noches" value="{{ noches }}">
+      <input type="hidden" name="data" value="{{ data }}">
+      <button type="submit">Confirmar reserva</button>
+    </form>
+  </body>
+</html>
